@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styles from './App.module.css';
+import TodoItem from "./components/TodoItem";
+import tasksData from "./components/todosData";
+import TodoInput from "./components/TodoInput";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      tasks: tasksData
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+  handleChange(id) {
+    this.setState(prevState => {
+      const updatedTasks = prevState.tasks.map(task => {
+        if(task.id === id) {
+          task.completed = !task.completed;
+        }
+        return task;
+      });
+      return updatedTasks;
+    });
+  }
+
+  render() {
+    const items = this.state.tasks.map(t => <TodoItem key={t.id} task={t} handleChange={this.handleChange}/>);
+    return (
+      <div className={styles.todoList}>
+        <TodoInput/>
+        {items}
+      </div>
+    );
+  };
 }
 
 export default App;
