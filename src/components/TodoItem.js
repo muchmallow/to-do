@@ -1,22 +1,16 @@
 import React from "react";
 import styles from "./TodoItem.module.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircle, faCheckCircle, faTimesCircle} from "@fortawesome/free-regular-svg-icons";
 
-const TodoItem = (props) => {
-
-    const onChange = () => {
-        props.handleChange(props.task.id);
-    };
-
-    return (
+const TodoItem = React.memo(({id, text, isCompleted, completeTask, removeTask}) => (
+    <li>
         <div className={styles.todoItem}>
-            <input id={props.task.id} type="checkbox" checked={props.task.completed} onChange={onChange}/>
-            {
-                (props.task.completed)
-                ? <label htmlFor={props.task.id}><p className={styles.todoItemDone}>{props.task.text}</p></label> 
-                : <label htmlFor={props.task.id}><p className={styles.todoItemDefault}>{props.task.text}</p></label>
-            }
+            <FontAwesomeIcon icon={isCompleted ? faCheckCircle : faCircle} size="lg" onClick={() => completeTask(id)}/>
+            <span className={isCompleted ? styles.todoItemDone : styles.todoItemDefault}>{text}</span>
+            <FontAwesomeIcon icon={faTimesCircle} size="lg"/>
         </div>
-    );
-};
+    </li>
+));
 
 export default TodoItem;

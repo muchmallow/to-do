@@ -15,4 +15,4 @@ export const removeTaskAC = id => ({
 export const completeTaskAC = id => ({
     type: COMPLETE_TASK,
     id
-})
+});

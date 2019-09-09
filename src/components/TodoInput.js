@@ -1,9 +1,10 @@
 import React from "react";
 
-const TodoInput = (props) => {
+const TodoInput = ({value, onChange, onKeyPress}) => {
     return (
       <div>
-        <input placeholder="Add a task"/>
+        <i/>
+        <input placeholder="Add a task" value={value} onChange={onChange} onKeyPress={onKeyPress}/>
       </div>
     );
 }

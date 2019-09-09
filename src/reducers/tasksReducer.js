@@ -1,52 +1,75 @@
 import {ADD_TASK, REMOVE_TASK, COMPLETE_TASK} from "../constants";
 
-const tasksData = [
-    {
-        id: 1,
-        text: "Take out the trash",
-        isCompleted: true
-    },
-    {
-        id: 2,
-        text: "Grocery shopping",
-        isCompleted: false
-    },
-    {
-        id: 3,
-        text: "Clean gecko tank",
-        isCompleted: false
-    },
-    {
-        id: 4,
-        text: "Mow lawn",
-        isCompleted: true
-    },
-    {
-        id: 5,
-        text: "Catch up on Arrested Development",
-        isCompleted: false
-    }
-];
+let initialState = {
+    tasks: [
+        {
+            id: 1,
+            text: "Take out the trash",
+            isCompleted: true
+        },
+        {
+            id: 2,
+            text: "Grocery shopping",
+            isCompleted: false
+        },
+        {
+            id: 3,
+            text: "Clean gecko tank",
+            isCompleted: false
+        },
+        {
+            id: 4,
+            text: "Mow lawn",
+            isCompleted: true
+        },
+        {
+            id: 5,
+            text: "Catch up on Arrested Development",
+            isCompleted: false
+        },
+        {
+            id: 6,
+            text: "Find a treasure",
+            isCompleted: false
+        },
+        {
+            id: 7,
+            text: "5к на вялом",
+            isCompleted: false
+        }
+    ]
+};
 
-const tasksReducer = (state = tasksData, action) => {
+const tasksReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_TASK: {
-            return [
+            let newTask = {
+                id: action.id,
+                text: action.text,
+                isCompleted: action.isCompleted
+            }
+            return {
                 ...state,
-                {
-                    id: action.id,
-                    text: action.text,
-                    isCompleted: action.isCompleted
-                }
-            ];
+                tasks: [...state.tasks, newTask]
+            }
         }
         case REMOVE_TASK: {
-            return [...state].filter(task => task.id !== action.id);
+            return {
+                ...state,
+                tasks: state.tasks.filter(task => task.id !== action.id)
+            }
         }
         case COMPLETE_TASK: {
-            return [...state].map(task => {
-                return (task.id === action.id) && !task.isCompleted;
-            });
+            return {
+                ...state,
+                tasks: state.tasks.map(task => {
+                    if(task.id === action.id) {
+                        return {...task, isCompleted: !task.isCompleted}
+                    }
+                    return task;
+                })
+                // tasks: state.tasks.map(task => ((task.id === action.id) && {...task, isCompleted: true}))
+            }
         }
         default:
             return state;

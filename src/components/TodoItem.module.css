@@ -5,14 +5,11 @@
     border-top: 2px solid #a1a1a1;
     border-top-left-radius: 25px;
     width: 100%;
-}
-
-.todoItem input {
-    opacity: 0;
+    font-size: calc(10px + 2vmin);
 }
 
 .todoItemDefault {
-    font-size: calc(11px + 2vmin);
+    
     font-weight: 100;
     color: dimgray;
     margin: 25px 30px;
@@ -20,7 +17,6 @@
 }
 
 .todoItemDone {
-    font-size: calc(11px + 2vmin);
     font-weight: 100;
     /* color: chartreuse; */
     color: #c0c0c0;
