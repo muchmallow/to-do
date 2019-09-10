@@ -8,7 +8,7 @@ const TodoItem = React.memo(({id, text, isCompleted, completeTask, removeTask}) 
         <div className={styles.todoItem}>
             <FontAwesomeIcon icon={isCompleted ? faCheckCircle : faCircle} size="lg" onClick={() => completeTask(id)}/>
             <span className={isCompleted ? styles.todoItemDone : styles.todoItemDefault}>{text}</span>
-            <FontAwesomeIcon icon={faTimesCircle} size="lg"/>
+            <FontAwesomeIcon icon={faTimesCircle} size="lg" onClick={() => removeTask(id)}/>
         </div>
     </li>
 ));
