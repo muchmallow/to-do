@@ -3,6 +3,13 @@ import {ADD_TASK, REMOVE_TASK, COMPLETE_TASK} from "../constants";
 
 //let initialState = load({namespace: "todo-list"});
 
+// if(!initialState || !initialState.tasks ||!initialState.tasks.length) {
+//     initialState = {
+//         tasksReducer: {
+//             tasks: []
+//         }
+//     }
+// }
 
 let initialState = {
     tasks: [
@@ -14,31 +21,6 @@ let initialState = {
         {
             id: 2,
             text: "Grocery shopping",
-            isCompleted: false
-        },
-        {
-            id: 3,
-            text: "Clean gecko tank",
-            isCompleted: false
-        },
-        {
-            id: 4,
-            text: "Mow lawn",
-            isCompleted: true
-        },
-        {
-            id: 5,
-            text: "Catch up on Arrested Development",
-            isCompleted: false
-        },
-        {
-            id: 6,
-            text: "Find a treasure",
-            isCompleted: false
-        },
-        {
-            id: 7,
-            text: "5к на вялом",
             isCompleted: false
         }
     ]

@@ -1,11 +1,14 @@
-import {combineReducers, createStore} from "redux";
+import {combineReducers, createStore, applyMiddleware} from "redux";
 import tasksReducer from "./tasksReducer";
-//import {save} from "redux-localstorage-simple";
+import {save, load} from "redux-localstorage-simple";
 
 const reducers = combineReducers({
     tasksReducer
 });
 
-let store = createStore(reducers);
+const createStoreWithMiddleware = applyMiddleware(save({namespace: "todo-app"}))(createStore);
+const store = createStoreWithMiddleware(reducers, load({namespace: "todo-app"}));
+
+//let store = createStore(reducers, applyMiddleware(save({namespace: "todo-list"})));
 
 export default store;
