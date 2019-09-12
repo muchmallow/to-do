@@ -7,8 +7,19 @@ class TodoItem extends React.PureComponent {
     state = {
         editMode: false,
         taskText: this.props.text,
-        id: null
+        id: null,
+        timer: 0
     }
+
+    mouseDownHandler = (id) => {
+        this.setState({
+            timer: setTimeout(this.activateEditMode(id), 800)
+        });
+    };
+
+    mouseUpHandler = () => {
+        clearTimeout(this.state.timer);
+    };
 
     activateEditMode = (id) => {
         this.setState({
@@ -16,6 +27,13 @@ class TodoItem extends React.PureComponent {
             id
         });
     };
+
+    deactivateEditMode = () => {
+        this.props.updateTaskTextAC(this.state.id, this.state.taskText);
+        this.setState({
+            editMode: false
+        });
+    }
 
     onTaskTextChange = (e) => {
         this.setState({
@@ -41,7 +59,7 @@ class TodoItem extends React.PureComponent {
     }
 
     render() {
-        const {id, text, isCompleted, completeTask, removeTask} = this.props;
+        const {id, isCompleted, completeTask, removeTask} = this.props;
         const {editMode, taskText} = this.state;
         return (
             <li>
@@ -53,7 +71,7 @@ class TodoItem extends React.PureComponent {
                         </span>
                     }
                     {editMode &&
-                        <input onKeyPress={this.updateTaskText} onChange={this.onTaskTextChange} autoFocus={true} value={taskText}/>
+                        <input className={isCompleted ? styles.updateTaskTextDone : styles.updateTaskText} onKeyPress={this.updateTaskText} onChange={this.onTaskTextChange} onBlur={this.deactivateEditMode} autoFocus={true} value={taskText}/>
                     }
                     <FontAwesomeIcon icon={faTimesCircle} size="lg" onClick={() => removeTask(id)} className={styles.iconDel}/>
                 </div>

@@ -15,18 +15,16 @@
 .todoItemDefault {
     color: dimgray;
     margin: 20px 25px;
-    padding: 0 0;
+    padding: 0;
 }
 
 .todoItemDone {
-    /* color: chartreuse; */
     color: #c0c0c0;
     text-decoration: line-through;
     background-color: rgb(173, 255, 91);
     border-radius: 15px;
     padding: 10px 15px;
     margin: 10px 10px;
-
 }
 
 .iconDone {
@@ -39,4 +37,30 @@
     position: sticky;
     right: 2px;
     transition: 0.7s;
+}
+
+.updateTaskText {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    outline: none;
+    border: none;
+    font-weight: 400;
+    font-size: calc(5px + 3vmin);
+    color: dimgray;
+    margin: 20px 25px;
+    text-align: center;
+}
+
+.updateTaskTextDone {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    outline: none;
+    border: none;
+    font-weight: 400;
+    font-size: calc(5px + 3vmin);
+    color: dimgray;
+    text-align: center;
+    text-decoration: line-through;
+    background-color: rgb(173, 255, 91);
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin: 10px 10px;
 }
