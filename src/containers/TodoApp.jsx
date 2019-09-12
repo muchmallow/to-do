@@ -9,9 +9,7 @@ import Footer from "../components/Footer";
 
 class TodoApp extends React.Component {
   state = {
-    editMode: false,
-    taskText: "",
-    id: null
+    taskText: ""
   };
   
   handleChange = ({target: {value}}) => {
@@ -19,12 +17,6 @@ class TodoApp extends React.Component {
       taskText: value
     });
   };
-
-  onTaskTextChange = (e) => {
-      this.setState({
-          taskText: e.currentTarget.value
-      })
-  }
 
   addTask = ({key}) => {
     const {taskText} = this.state;
@@ -35,26 +27,6 @@ class TodoApp extends React.Component {
         taskText: ""
       });
     }
-  };
-
-  updateTaskText = ({key}) => {
-    const {taskText, id} = this.state;
-    if(taskText.length > 3 && key === "Enter") {
-        const {updateTaskTextAC} = this.props;
-        updateTaskTextAC(id, taskText);
-        this.setState({
-            editMode: false,
-            taskText: "",
-            id: null
-        });
-    }
-  }
-
-  activateEditMode = (id) => {
-      this.setState({
-          editMode: true,
-          id
-      });
   };
 
   getActiveTasksCounter = tasks => tasks.filter(task => !task.isCompleted).length;
@@ -78,7 +50,7 @@ class TodoApp extends React.Component {
     return (
       <div className={styles.todoContainer}>
         <TodoInput onChange={this.handleChange} addTask={this.addTask} value={this.state.taskText}/>
-        <TodoList tasks={filteredTasks} completeTask={this.props.completeTaskAC} removeTask={this.props.removeTaskAC} updateTaskText={this.updateTaskText} onTaskTextChange={this.onTaskTextChange} activateEditMode={this.activateEditMode} editMode={this.state.editMode}/>
+        <TodoList tasks={filteredTasks} completeTask={this.props.completeTaskAC} removeTask={this.props.removeTaskAC} updateTaskTextAC={this.props.updateTaskTextAC}/>
         <Footer amount={tasksAmount} activeFilter={this.props.filters} changeFilter={this.props.changeFilterAC}/>
       </div>
     );
