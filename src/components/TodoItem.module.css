@@ -1,29 +1,42 @@
 .todoItem {
     display: flex;
     flex-direction: row;
+    flex-wrap: unset;
+    justify-content: space-between;
     align-items: center;
     border-top: 2px solid #a1a1a1;
     border-top-left-radius: 25px;
     width: 100%;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(5px + 3vmin);
+    position: relative;
+    font-weight: 400;
 }
 
 .todoItemDefault {
-    
-    font-weight: 100;
     color: dimgray;
-    margin: 25px 30px;
+    margin: 20px 25px;
     padding: 0 0;
 }
 
 .todoItemDone {
-    font-weight: 100;
     /* color: chartreuse; */
     color: #c0c0c0;
     text-decoration: line-through;
     background-color: rgb(173, 255, 91);
     border-radius: 15px;
     padding: 10px 15px;
-    margin: 15px 15px;
+    margin: 10px 10px;
 
+}
+
+.iconDone {
+    position: sticky;
+    left: 2px;
+    transition: 0.7s;
+}
+
+.iconDel {
+    position: sticky;
+    right: 2px;
+    transition: 0.7s;
 }

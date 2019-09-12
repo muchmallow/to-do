@@ -1,7 +1,8 @@
 import React from "react";
+import styles from "./Header.module.css";
 
 const Header = (props) => (
-    <h1>{props.title}</h1>
+    <h1 className={styles.title}>{props.title}</h1>
 );
 
 export default Header;

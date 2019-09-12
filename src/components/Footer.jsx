@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Footer.module.css";
 
 const BTN_FILTERS = [
     {
@@ -15,11 +16,15 @@ const BTN_FILTERS = [
     }
 ];
 
-const Footer = ({amount}) => (
-    <div>
+const Footer = ({amount, currentFilter, changeFilter}) => (
+    <div className={styles.buttonsBottom}>
         <span>{`${amount} Tasks to do`}</span>
         <div>
-            {}
+            {
+                BTN_FILTERS.map(({id, text}) => (
+                    <button key={id} onClick={() => changeFilter(id)}>{text}</button>
+                ))
+            }
         </div>
     </div>
 );

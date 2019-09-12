@@ -1,4 +1,4 @@
-import {ADD_TASK, REMOVE_TASK, COMPLETE_TASK} from "../constants";
+import {ADD_TASK, REMOVE_TASK, COMPLETE_TASK, UPDATE_TASK_TEXT} from "../constants";
 //import {load} from "redux-localstorage-simple";
 
 //let initialState = load({namespace: "todo-list"});
@@ -11,16 +11,11 @@ import {ADD_TASK, REMOVE_TASK, COMPLETE_TASK} from "../constants";
 //     }
 // }
 
-let initialState = {
+const initialState = {
     tasks: [
         {
-            id: 1,
-            text: "Take out the trash",
-            isCompleted: true
-        },
-        {
-            id: 2,
-            text: "Grocery shopping",
+            id: 322,
+            text: "Это initialState, redux state еще нет или отвалился",
             isCompleted: false
         }
     ]
@@ -55,6 +50,17 @@ const tasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: state.tasks.filter(task => task.id !== action.id)
+            }
+        }
+        case UPDATE_TASK_TEXT: {
+            return {
+                ...state,
+                tasks: state.tasks.map(task => {
+                    if(task.id === action.id) {
+                        return {...task, text: action.text}
+                    }
+                    return task;
+                })
             }
         }
         default:

@@ -1,9 +1,11 @@
 import {combineReducers, createStore, applyMiddleware} from "redux";
 import tasksReducer from "./tasksReducer";
+import filtersReducer from "./filtersReducer";
 import {save, load} from "redux-localstorage-simple";
 
 const reducers = combineReducers({
-    tasksReducer
+    tasksReducer,
+    filtersReducer
 });
 
 const createStoreWithMiddleware = applyMiddleware(save({namespace: "todo-app"}))(createStore);
