@@ -18,14 +18,12 @@ const BTN_FILTERS = [
 
 const Footer = ({amount, currentFilter, changeFilter}) => (
     <div className={styles.buttonsBottom}>
-        <span>{`${amount} Tasks to do`}</span>
-        <div>
+        <span className={styles.amount}>{`${amount} Left`}</span>
             {
                 BTN_FILTERS.map(({id, text}) => (
-                    <button key={id} onClick={() => changeFilter(id)}>{text}</button>
+                    <button className={styles.btn} key={id} onClick={() => changeFilter(id)}>{text}</button>
                 ))
             }
-        </div>
     </div>
 );
 

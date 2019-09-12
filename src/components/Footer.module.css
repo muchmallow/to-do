@@ -1,4 +1,22 @@
 .buttonsBottom {
-    position: sticky-bottom;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.amount {
+    position: absolute;
+    left: 8px;
+    bottom: 5px;
+    font-size: calc(8px + 1vmin);
+    font-weight: 100;
+}
+
+.btn {
+    border: none;
+    font-size: calc(7px + 1vmin);
+    font-weight: 100;
+    padding: 7px 17px;
 }
