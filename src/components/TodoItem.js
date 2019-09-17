@@ -8,7 +8,7 @@ class TodoItem extends React.PureComponent {
         editMode: false,
         taskText: this.props.text,
         id: null
-    }
+    };
 
     timer = 0;
 
@@ -24,13 +24,13 @@ class TodoItem extends React.PureComponent {
         this.setState({
             editMode: false
         });
-    }
+    };
 
     onTaskTextChange = (e) => {
         this.setState({
             taskText: e.currentTarget.value
         })
-    }
+    };
 
     updateTaskText = ({key}) => {
         if(key === "Enter") {
@@ -39,7 +39,7 @@ class TodoItem extends React.PureComponent {
                 editMode: false
             });
         }
-    }
+    };
 
     mouseDownHandler = (id) => {
         this.timer = setTimeout(this.activateEditMode, 800, id);

@@ -1,4 +1,16 @@
-import {ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_FILTER, UPDATE_TASK_TEXT} from "../constants";
+import {
+    ADD_TASK,
+    REMOVE_TASK,
+    COMPLETE_TASK,
+    CHANGE_FILTER,
+    UPDATE_TASK_TEXT,
+    SET_TOTAL_NEWS_COUNT,
+    SET_CURRENT_PAGE,
+    SET_ARTICLES,
+    SET_TOPIC,
+    SET_SORT_BY
+} from "../constants";
+import {newsAPI} from "../api/api";
 
 export const addTaskAC = (id, text, isCompleted) => ({
     type: ADD_TASK,
@@ -27,3 +39,52 @@ export const updateTaskTextAC = (id, text) => ({
     id,
     text
 });
+
+export const setTotalNewsCountAC = (totalNewsCount) => ({
+    type: SET_TOTAL_NEWS_COUNT,
+    totalNewsCount
+});
+
+export const setCurrentPageAC = (currentPage) => ({
+    type: SET_CURRENT_PAGE,
+    currentPage
+});
+
+export const setArticlesAC = (articles) => ({
+    type: SET_ARTICLES,
+    articles
+});
+
+export const setTopicAC = (topic) => ({
+    type: SET_TOPIC,
+    topic
+});
+
+export const setSortByAC = (sortBy) => ({
+    type: SET_SORT_BY,
+    sortBy
+});
+
+const getIdToArticles = (parsedData) => {
+    let length = parsedData.articles.length;
+    for(let i = 0; i < length; i++) {
+        parsedData.articles.id = i;
+    }
+    return parsedData;
+};
+
+export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (dispatch) => {
+    dispatch(setCurrentPageAC(requestedPage));
+    dispatch(setTopicAC(topic));
+    dispatch(setSortByAC(sortBy));
+    let response = await newsAPI.getNews(topic, sortBy, pageSize, requestedPage);
+    let parsedData = await JSON.parse(response, (key, value) => {
+        if (key === "publishedAt") {
+            return new Date(value);
+        }
+        return value;
+    });
+    let data = await getIdToArticles(parsedData);
+    dispatch(setArticlesAC(data.articles));
+    dispatch(setTotalNewsCountAC(data.totalResults));
+};

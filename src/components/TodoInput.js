@@ -7,6 +7,6 @@ const TodoInput = ({value, onChange, addTask}) => {
         <input placeholder="Add a task" value={value} onChange={onChange} onKeyPress={addTask}/>
       </div>
     );
-}
+};
   
   export default TodoInput;
