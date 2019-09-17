@@ -5,7 +5,7 @@ let initialState = {
     totalNewsCount: 0,
     currentPage: 1,
     pageSize: 20,
-    topic: "",
+    topic: "apple",
     sortBy: "publishedAt"
 };
 
@@ -45,7 +45,5 @@ const newsReducer = (state = initialState, action) => {
             return state;
     }
 };
-
-
 
 export default newsReducer;

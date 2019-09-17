@@ -65,12 +65,12 @@ export const setSortByAC = (sortBy) => ({
     sortBy
 });
 
-const getIdToArticles = (parsedData) => {
-    let length = parsedData.articles.length;
+const getIdToArticles = (data) => {
+    let length = data.articles.length;
     for(let i = 0; i < length; i++) {
-        parsedData.articles.id = i;
+        data.articles[i].id = i;
     }
-    return parsedData;
+    return data;
 };
 
 export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (dispatch) => {
@@ -78,13 +78,7 @@ export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (
     dispatch(setTopicAC(topic));
     dispatch(setSortByAC(sortBy));
     let response = await newsAPI.getNews(topic, sortBy, pageSize, requestedPage);
-    let parsedData = await JSON.parse(response, (key, value) => {
-        if (key === "publishedAt") {
-            return new Date(value);
-        }
-        return value;
-    });
-    let data = await getIdToArticles(parsedData);
+    let data = await getIdToArticles(response.data);
     dispatch(setArticlesAC(data.articles));
     dispatch(setTotalNewsCountAC(data.totalResults));
 };

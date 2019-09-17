@@ -5,7 +5,7 @@ import {compose} from "redux";
 import {setArticlesAC, setCurrentPageAC, setTotalNewsCountAC, requestNewsTC} from "../actionCreators/actionCreator";
 //actionCreators??????????
 
-class NewsContainer extends React.PureComponent{
+class NewsContainer extends React.Component{
     componentDidMount() {
         this.props.requestNewsTC(this.props.topic, this.props.sortBy, this.props.pageSize, this.props.currentPage);
     }

@@ -8,8 +8,8 @@ const instance = axios.create({
 });
 
 export const newsAPI = {
-    getNews(topic = "", sortBy = "publishedAt", pageSize = 20, currentPage = 1) {
-        return instance.get(`everything?q=${topic}&sortBy=${sortBy}&pageSize=${pageSize}&page=${currentPage}`);
+    getNews(topic = "apple", sortBy = "publishedAt", pageSize = 20, currentPage = 1) {
+        return instance.get(`everything?language=en&q=${topic}&sortBy=${sortBy}&pageSize=${pageSize}&page=${currentPage}`);
     },
     getTopNews(pageSize = 20, currentPage = 1) {
         return instance.get(`top-headlines?pageSize=${pageSize}&page=${currentPage}`);
