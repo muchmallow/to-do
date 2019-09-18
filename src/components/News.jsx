@@ -4,7 +4,12 @@ import Paginator from "./Paginator";
 
 const News = ({articles, totalNewsCount, currentPage, pageSize, topic, sortBy, onPageChanged}) => {
     return <div>
-        <Paginator/>
+        <Paginator totalNewsCount={totalNewsCount}
+                   currentPage={currentPage}
+                   pageSize={pageSize}
+                   topic={topic}
+                   sortBy={sortBy}
+                   onPageChanged={onPageChanged}/>
         <div>
             {articles.map(a => <NewsPreview key={a.id}
                                             id={a.id}

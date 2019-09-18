@@ -2,8 +2,7 @@ import React from "react";
 import News from "../components/News";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {setArticlesAC, setCurrentPageAC, setTotalNewsCountAC, requestNewsTC} from "../actionCreators/actionCreator";
-//actionCreators??????????
+import {requestNewsTC} from "../actionCreators/actionCreator";
 
 class NewsContainer extends React.Component{
     componentDidMount() {
@@ -40,5 +39,5 @@ let mapStateToProps = (state) => {
 };
 
 export default compose(
-    connect(mapStateToProps, {setArticlesAC, setCurrentPageAC, setTotalNewsCountAC, requestNewsTC})
+    connect(mapStateToProps, {requestNewsTC})
 )(NewsContainer);

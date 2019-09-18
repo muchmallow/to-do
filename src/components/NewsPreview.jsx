@@ -6,10 +6,10 @@ class NewsPreview extends React.PureComponent {
     render() {
         const {id, author, title, description, image, date, content} = this.props;
         return (
-            <div>
+            <div className={styles.postSection}>
                 <div>
                     <NavLink to={"/news/" + id}>
-                        <img src={image} alt={"articleImage"}/>
+                        <img src={image} alt={"articleImage"} className={styles.img}/>
                     </NavLink>
                         <p>{author}</p>
                         <p>{date}</p>

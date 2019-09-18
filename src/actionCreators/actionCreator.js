@@ -65,6 +65,7 @@ export const setSortByAC = (sortBy) => ({
     sortBy
 });
 
+//----------------------------------------------------------------------------------------------------------------------
 const getIdToArticles = (data) => {
     let length = data.articles.length;
     for(let i = 0; i < length; i++) {
