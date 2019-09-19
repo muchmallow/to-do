@@ -15,7 +15,7 @@ class App extends React.PureComponent {
             <Fragment>
                 <Header title="To do list"/>
                 <Switch>
-                    <Route path={"/news"} render={() => <NewsContainer/>}/>
+                    <Route path={"/news/:articleId?"} render={() => <NewsContainer/>}/>
                     <Route path={"/weather"} render={() => <WeatherContainer/>}/>
                     <Route path={"/"} render={() => <TodoApp/>}/>
                 </Switch>

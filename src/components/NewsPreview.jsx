@@ -7,21 +7,22 @@ class NewsPreview extends React.PureComponent {
         const {id, author, title, description, image, date, content} = this.props;
         return (
             <div className={styles.postSection}>
+                <NavLink to={"/news/" + id}>
+                    <div className={styles.cardWrapper}>
+                        <div className={styles.darkerImg}>
+                            <img src={image} alt={"articleImage"} className={styles.img}/>
+                        </div>
+                        <div className={styles.cardTitle}>
+                            <div className={styles.postInfo}>
+                                <span className={styles.author}>{author}</span>
+                                <span className={styles.date}>{date}</span>
+                            </div>
+                            <p className={styles.title}>{title}</p>
+                        </div>
+                    </div>
+                </NavLink>
                 <div>
-                    <NavLink to={"/news/" + id}>
-                        <img src={image} alt={"articleImage"} className={styles.img}/>
-                    </NavLink>
-                        <p>{author}</p>
-                        <p>{date}</p>
-                    <NavLink to={"/news/" + id}>
-                        <span>{title}</span>
-                    </NavLink>
-
-                </div>
-                <div>
-                    <NavLink to={"/news/" + id}>
-                        <p>{description}</p>
-                    </NavLink>
+                    <p className={styles.description}>{description}</p>
                 </div>
             </div>
         );

@@ -1,3 +1,97 @@
+.postSection {
+    width: 70%;
+    margin: 7px auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 2px 2px 8px slategray;
+    font-size: calc(6px + 2vmin);
+    font-weight: 400;
+    transition: 0.2s;
+}
+
+.postSection a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.postSection:hover {
+    box-shadow: 4px 2px 20px slategray;
+    transform: scale(1.005);
+}
+
+.cardWrapper {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.cardTitle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    position: absolute;
+    font-size: calc(6px + 1vmin);
+    font-weight: 400;
+    bottom: 4%;
+    z-index: 2;
+}
+
+.postInfo {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.author {
+    margin-right: 15px;
+}
+
+.date {
+
+}
+
+.title {
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.description {
+    margin: 15px;
+}
+
+.darkerImg {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+}
+
+.darkerImg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0;
+}
+
 .img {
-    max-width: 70%;
+    width: 100%;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0;
 }
