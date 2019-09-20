@@ -6,7 +6,7 @@ const Header = (props) => {
     switch(document.location.pathname) {
         case "/news": {
             return (
-                <div>
+                <div className={styles.header}>
                     <NavLink to={"/"}>To Do List</NavLink>
                     <NavLink to={"/weather"}>Weather Channel</NavLink>
                 </div>
@@ -14,15 +14,24 @@ const Header = (props) => {
         }
         case "/weather": {
             return (
-                <div>
+                <div className={styles.header}>
                     <NavLink to={"/"}>To Do List</NavLink>
                     <NavLink to={"/news"}>News Channel</NavLink>
                 </div>
             );
         }
+        case "/news/:articleId": {
+            return (
+                <div className={styles.header}>
+                    <NavLink to={"/"}>To Do List</NavLink>
+                    <NavLink to={"/news"}>News Channel</NavLink>
+                    <NavLink to={"/weather"}>Weather Channel</NavLink>
+                </div>
+            );
+        }
         default: {
             return (
-                <div>
+                <div className={styles.header}>
                     <NavLink to={"/news"}>News Feed</NavLink>
                     <NavLink to={"/weather"}>Weather Channel</NavLink>
                 </div>

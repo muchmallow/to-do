@@ -3,10 +3,10 @@ import {Route, Switch, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import Header from "./components/Header";
-import styles from './App.module.css';
 import TodoApp from "./containers/TodoApp";
 import NewsContainer from "./containers/NewsContainer";
 import WeatherContainer from "./containers/WeatherContainer";
+import ArticleContainer from "./containers/ArticleContainer";
 
 
 class App extends React.PureComponent {
@@ -15,8 +15,9 @@ class App extends React.PureComponent {
             <Fragment>
                 <Header title="To do list"/>
                 <Switch>
-                    <Route path={"/news/:articleId?"} render={() => <NewsContainer/>}/>
-                    <Route path={"/weather"} render={() => <WeatherContainer/>}/>
+                    <Route exact path={"/news/:articleId"} render={() => <ArticleContainer/>}/>
+                    <Route exact path={"/news"} render={() => <NewsContainer/>}/>
+                    <Route exact path={"/weather"} render={() => <WeatherContainer/>}/>
                     <Route path={"/"} render={() => <TodoApp/>}/>
                 </Switch>
             </Fragment>

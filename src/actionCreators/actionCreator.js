@@ -8,7 +8,9 @@ import {
     SET_CURRENT_PAGE,
     SET_ARTICLES,
     SET_TOPIC,
-    SET_SORT_BY
+    SET_SORT_BY,
+    SET_CURRENT_ARTICLE,
+    UNSET_CURRENT_ARTICLE
 } from "../constants";
 import {newsAPI} from "../api/api";
 
@@ -65,11 +67,28 @@ export const setSortByAC = (sortBy) => ({
     sortBy
 });
 
+export const setCurrentArticle = (id, author, title, description, url, image, date, content) => ({
+    type: SET_CURRENT_ARTICLE,
+    id,
+    author,
+    title,
+    description,
+    url,
+    image,
+    date,
+    content
+});
+
+export const unsetCurrentArticle = () => ({
+    type: UNSET_CURRENT_ARTICLE
+});
+
 //----------------------------------------------------------------------------------------------------------------------
-const getIdToArticles = (data) => {
+const getIdAndLocaleDateToArticles = (data) => {
     let length = data.articles.length;
     for(let i = 0; i < length; i++) {
         data.articles[i].id = i;
+        data.articles[i].publishedAt = new Date(data.articles[i].publishedAt).toLocaleString();
     }
     return data;
 };
@@ -79,7 +98,7 @@ export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (
     dispatch(setTopicAC(topic));
     dispatch(setSortByAC(sortBy));
     let response = await newsAPI.getNews(topic, sortBy, pageSize, requestedPage);
-    let data = await getIdToArticles(response.data);
+    let data = await getIdAndLocaleDateToArticles(response.data);
     dispatch(setArticlesAC(data.articles));
     dispatch(setTotalNewsCountAC(data.totalResults));
 };

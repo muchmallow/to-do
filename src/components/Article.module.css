@@ -1,0 +1,46 @@
+.article {
+    margin: 0;
+    font-size: calc(6px + 2vmin);
+}
+
+.headline {
+
+}
+
+.authorAndDate {
+    margin-top: 1%;
+    margin-left: 20%;
+    font-size: calc(4px + 2vmin);
+}
+
+.authorAndDate span {
+    margin-right: 5%;
+    color: #a1a1a1;
+}
+
+.title {
+    font-size: calc(6px + 2vmin);
+    margin: 0 15%;
+}
+
+.articleImageWrapper {
+    margin: 0 5%;
+}
+
+.articleImageWrapper span a {
+    text-decoration: none;
+    color: #a1a1a1;
+    font-size: calc(2px + 2vmin);
+}
+.articleImage {
+    width: 100%;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0;
+    box-shadow: 2px 2px 6px slategray;
+}
+
+.content {
+    margin: 3% 5%;
+    font-size: calc(10px + 2vmin);
+}

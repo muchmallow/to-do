@@ -4,10 +4,11 @@ import styles from "./NewsPreview.module.css";
 
 class NewsPreview extends React.PureComponent {
     render() {
-        const {id, author, title, description, image, date, content} = this.props;
+        const {id, author, title, description, url, image, date, content, setCurrentArticle} = this.props;
         return (
             <div className={styles.postSection}>
-                <NavLink to={"/news/" + id}>
+                <NavLink to={"/news/" + id}
+                         onClick={() => setCurrentArticle(id, author, title, description, url, image, date, content)}>
                     <div className={styles.cardWrapper}>
                         <div className={styles.darkerImg}>
                             <img src={image} alt={"articleImage"} className={styles.img}/>

@@ -1,4 +1,12 @@
-import {SET_ARTICLES, SET_CURRENT_PAGE, SET_TOTAL_NEWS_COUNT, SET_TOPIC, SET_SORT_BY} from "../constants";
+import {
+    SET_ARTICLES,
+    SET_CURRENT_PAGE,
+    SET_TOTAL_NEWS_COUNT,
+    SET_TOPIC,
+    SET_SORT_BY,
+    SET_CURRENT_ARTICLE,
+    UNSET_CURRENT_ARTICLE
+} from "../constants";
 
 let initialState = {
     articles: [],
@@ -6,7 +14,8 @@ let initialState = {
     currentPage: 1,
     pageSize: 20,
     topic: "apple",
-    sortBy: "publishedAt"
+    sortBy: "publishedAt",
+    currentArticle: {}
 };
 
 const newsReducer = (state = initialState, action) => {
@@ -39,6 +48,28 @@ const newsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 sortBy: action.sortBy
+            }
+        }
+        case SET_CURRENT_ARTICLE: {
+            return {
+                ...state,
+                currentArticle: {
+                    ...state.currentArticle,
+                    id: action.id,
+                    author: action.author,
+                    title: action.title,
+                    description: action.description,
+                    url: action.url,
+                    image: action.image,
+                    date: action.date,
+                    content: action.content
+                }
+            }
+        }
+        case UNSET_CURRENT_ARTICLE: {
+            return {
+                ...state,
+                currentArticle: {}
             }
         }
         default:
