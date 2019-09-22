@@ -10,9 +10,11 @@ import {
     SET_TOPIC,
     SET_SORT_BY,
     SET_CURRENT_ARTICLE,
-    UNSET_CURRENT_ARTICLE
+    UNSET_CURRENT_ARTICLE,
+    SET_FIVE_DAY_FORECAST,
+    SET_CURRENT_WEATHER
 } from "../constants";
-import {newsAPI} from "../api/api";
+import {newsAPI, weatherAPI} from "../api/api";
 
 export const addTaskAC = (id, text, isCompleted) => ({
     type: ADD_TASK,
@@ -83,7 +85,23 @@ export const unsetCurrentArticle = () => ({
     type: UNSET_CURRENT_ARTICLE
 });
 
-//----------------------------------------------------------------------------------------------------------------------
+export const setFiveDayForecast = ({ }) => ({
+    type: SET_FIVE_DAY_FORECAST,
+
+});
+
+export const setCurrentWeather = ({weather, main, visibility, wind, clouds, dt, sys, name}) => ({
+    type: SET_CURRENT_WEATHER,
+    weather,
+    main,
+    visibility,
+    wind,
+    clouds,
+    dt,
+    sys,
+    name
+});
+
 const getIdAndLocaleDateToArticles = (data) => {
     let length = data.articles.length;
     for(let i = 0; i < length; i++) {
@@ -101,4 +119,14 @@ export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (
     let data = await getIdAndLocaleDateToArticles(response.data);
     dispatch(setArticlesAC(data.articles));
     dispatch(setTotalNewsCountAC(data.totalResults));
+};
+
+export const requestCurrentWeatherTC = () => async (dispatch) => {
+    let response = await weatherAPI.getCurrentWeather();
+    dispatch(setCurrentWeather(response.data));
+};
+
+export const requestFiveDayForecastTC = () => async (dispatch) => {
+    let response = await weatherAPI.getFiveDayForecast();
+    dispatch(setFiveDayForecast(response.data));
 };

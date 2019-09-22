@@ -4,11 +4,13 @@ import filtersReducer from "./filtersReducer";
 import newsReducer from "./newsReducer";
 import {save, load} from "redux-localstorage-simple";
 import thunkMiddleware from "redux-thunk";
+import weatherReducer from "./weatherReducer";
 
 const reducers = combineReducers({
     tasksReducer,
     filtersReducer,
-    newsReducer
+    newsReducer,
+    weatherReducer
 });
 
 const createStoreWithMiddleware = applyMiddleware(save({namespace: "todo-app"}), thunkMiddleware)(createStore);

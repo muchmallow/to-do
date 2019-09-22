@@ -10,6 +10,6 @@ const filtersReducer = (state = BASE_BTN, action) => {
         default:
             return state;
     }
-}
+};
 
 export default filtersReducer;

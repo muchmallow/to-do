@@ -7,7 +7,7 @@ import TodoList from "../components/TodoList";
 import Footer from "../components/Footer";
 
 
-class TodoApp extends React.Component {
+class TodoApp extends React.PureComponent {
   state = {
     taskText: ""
   };
