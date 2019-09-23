@@ -15,9 +15,9 @@ class App extends React.PureComponent {
             <Fragment>
                 <Header title="To do list"/>
                 <Switch>
-                    <Route exact path={"/news/:articleId"} render={() => <ArticleContainer/>}/>
-                    <Route exact path={"/news"} render={() => <NewsContainer/>}/>
-                    <Route exact path={"/weather"} render={() => <WeatherContainer/>}/>
+                    <Route path={"/news/:articleId"} render={() => <ArticleContainer/>}/>
+                    <Route path={"/news"} render={() => <NewsContainer/>}/>
+                    <Route path={"/weather"} render={() => <WeatherContainer/>}/>
                     <Route path={"/"} render={() => <TodoApp/>}/>
                 </Switch>
             </Fragment>

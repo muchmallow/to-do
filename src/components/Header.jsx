@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./Header.module.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 
 const Header = (props) => {
-    switch(document.location.pathname) {
-        case "/to-do/news": {
+    const {match, location, history} = props;
+    switch(location.pathname) {
+        case "/news": {
             return (
                 <div className={styles.header}>
                     <NavLink to={"/"}>To Do List</NavLink>
@@ -12,7 +13,7 @@ const Header = (props) => {
                 </div>
             );
         }
-        case "/to-do/weather": {
+        case "/weather": {
             return (
                 <div className={styles.header}>
                     <NavLink to={"/"}>To Do List</NavLink>
@@ -20,7 +21,7 @@ const Header = (props) => {
                 </div>
             );
         }
-        case "/to-do/news/:articleId": {
+        case "/news/:articleId": {
             return (
                 <div className={styles.header}>
                     <NavLink to={"/"}>To Do List</NavLink>
@@ -40,4 +41,4 @@ const Header = (props) => {
     }
 };
 
-export default Header;
+export default withRouter(Header);
