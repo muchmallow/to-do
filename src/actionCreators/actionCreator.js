@@ -85,10 +85,10 @@ export const unsetCurrentArticle = () => ({
     type: UNSET_CURRENT_ARTICLE
 });
 
-export const setFiveDayForecast = ({ }) => ({
-    type: SET_FIVE_DAY_FORECAST,
-
-});
+// export const setFiveDayForecast = ({ }) => ({
+//     type: SET_FIVE_DAY_FORECAST,
+//
+// });
 
 export const setCurrentWeather = ({weather, main, visibility, wind, clouds, dt, sys, name}) => ({
     type: SET_CURRENT_WEATHER,
@@ -126,7 +126,7 @@ export const requestCurrentWeatherTC = () => async (dispatch) => {
     dispatch(setCurrentWeather(response.data));
 };
 
-export const requestFiveDayForecastTC = () => async (dispatch) => {
-    let response = await weatherAPI.getFiveDayForecast();
-    dispatch(setFiveDayForecast(response.data));
-};
+// export const requestFiveDayForecastTC = () => async (dispatch) => {
+//     let response = await weatherAPI.getFiveDayForecast();
+//     dispatch(setFiveDayForecast(response.data));
+// };

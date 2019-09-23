@@ -1,7 +1,10 @@
 import React from "react";
+import {connect} from "react-redux";
 import styles from "./Weather.module.css";
 
-const Weather = ({weather, main, visibility, wind, clouds, dt, sys, name}) => {
+const Weather = ({currentWeather}) => {
+    const {weather, main, visibility, wind, clouds, dt, sys, name} = currentWeather;
+    
     let imgUrl = "https://openweathermap.org/img/w/" + weather[0].icon + ".png";
     let dateRise = new Date(sys.sunrise * 1000);
     let hoursRise =  dateRise.getHours();
@@ -9,8 +12,6 @@ const Weather = ({weather, main, visibility, wind, clouds, dt, sys, name}) => {
     let dateSet = new Date(sys.sunset * 1000);
     let hoursSet = dateSet.getHours();
     let minutesSet = dateSet.getMinutes();
-
-
 
     return (
         <div>
@@ -57,4 +58,10 @@ const Weather = ({weather, main, visibility, wind, clouds, dt, sys, name}) => {
     );
 };
 
-export default Weather;
+let mapStateToProps = (state) => {
+    return {
+        currentWeather: state.weatherReducer.currentWeather
+    }
+};
+
+export default connect(mapStateToProps)(Weather);

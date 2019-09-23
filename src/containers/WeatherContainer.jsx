@@ -10,16 +10,8 @@ class WeatherContainer extends React.PureComponent {
     }
 
     render() {
-        const {weather, main, visibility, wind, clouds, dt, sys, name} = this.props.currentWeather;
         return (
-            <Weather weather={weather}
-                     main={main}
-                     visibility={visibility}
-                     wind={wind}
-                     clouds={clouds}
-                     dt={dt}
-                     sys={sys}
-                     name={name}/>
+            <Weather />
         );
     }
 }
