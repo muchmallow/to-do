@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
     switch(document.location.pathname) {
-        case "/news": {
+        case "/to-do/news": {
             return (
                 <div className={styles.header}>
                     <NavLink to={"/"}>To Do List</NavLink>
@@ -12,7 +12,7 @@ const Header = (props) => {
                 </div>
             );
         }
-        case "/weather": {
+        case "/to-do/weather": {
             return (
                 <div className={styles.header}>
                     <NavLink to={"/"}>To Do List</NavLink>
@@ -20,7 +20,7 @@ const Header = (props) => {
                 </div>
             );
         }
-        case "/news/:articleId": {
+        case "/to-do/news/:articleId": {
             return (
                 <div className={styles.header}>
                     <NavLink to={"/"}>To Do List</NavLink>

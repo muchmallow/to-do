@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import store from "./reducers/reduxStore";
 
 ReactDOM.render((
-    <BrowserRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
         <Provider store={store}>
             <App/>
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 ), document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

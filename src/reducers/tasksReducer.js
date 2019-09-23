@@ -4,7 +4,7 @@ const initialState = {
     tasks: [
         {
             id: 322,
-            text: "Это initialState, redux state еще нет или отвалился",
+            text: "Это захардкодженая таска, добавляй свои плз",
             isCompleted: false
         }
     ]
