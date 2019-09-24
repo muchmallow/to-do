@@ -3,54 +3,51 @@ import {connect} from "react-redux";
 import styles from "./Weather.module.css";
 
 const Weather = ({currentWeather}) => {
-    const {weather, main, visibility, wind, clouds, dt, sys, name} = currentWeather;
+    const {humidity, partOfDay, pressure, lastObservationTime, clouds, city, windSpeed, windDirection, visibility, sunset, sunrise, snowfall, weather, temperature, feelsLike} = currentWeather;
 
-    let imgUrl = `https://openweathermap.org/img/w/${weather[0].icon}.png`;
-    let dateRise = new Date(sys.sunrise * 1000);
-    let hoursRise =  dateRise.getHours();
-    let minutesRise = dateRise.getMinutes();
-    let dateSet = new Date(sys.sunset * 1000);
-    let hoursSet = dateSet.getHours();
-    let minutesSet = dateSet.getMinutes();
+    let imgUrl = `https://weatherbit.io/static/img/icons/${weather.icon}.png`;
 
     return (
         <div>
             <div className={styles.container}>
                 <div className={styles.topContainer}>
-                    <h1>{name}</h1>
+                    <h1>{city}</h1>
                     <div>
-                        <span>Current temperature: {main.temp}&#176;C</span>
+                        <span>Current t&#176; - {temperature}&#176;C</span>
                     </div>
                     <div>
-                        <span>Varies from {main.temp_min}&#176;C to {main.temp_max}&#176;C</span>
+                        <span>Feels Like {feelsLike}&#176;C</span>
                     </div>
                     <div className={styles.imgWrapper}>
-                        <span>{weather[0].main}</span>
+                        <span>{weather.description}</span>
                         <img src={imgUrl} alt="weatherIcon"/>
                     </div>
                 </div>
                 <hr/>
                 <div className={styles.bottomContainer}>
                     <div>
-                        <span>Wind: {wind.deg}&#176; {wind.speed} m/s</span>
+                        <span>Wind: {windSpeed} m/s {windDirection}</span>
                     </div>
                     <div>
-                        <span>Visibility: {visibility} m</span>
+                        <span>Visibility: {visibility * 1000} m</span>
                     </div>
                     <div>
-                        <span>Cloudiness: {clouds.all}%</span>
+                        <span>Cloudiness: {clouds}%</span>
                     </div>
                     <div>
-                        <span>Humidity: {main.humidity}%</span>
+                        <span>Humidity: {humidity}%</span>
                     </div>
                     <div>
-                        <span>Pressure: {main.pressure} hPa</span>
+                        <span>Pressure: {pressure} hPa</span>
                     </div>
                     <div>
-                        <span>Sunrise: {hoursRise}:{minutesRise}</span>
+                        <span>Sunrise: {sunrise}</span>
                     </div>
                     <div>
-                        <span>Sunset: {hoursSet}:{minutesSet}</span>
+                        <span>Sunset: {sunset}</span>
+                    </div>
+                    <div className={styles.station}>
+                        <span>There was the last respond from the station at: {lastObservationTime}</span>
                     </div>
                 </div>
             </div>

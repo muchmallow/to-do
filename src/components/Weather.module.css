@@ -8,7 +8,9 @@
 }
 
 .topContainer {
-
+    border: 2px solid slategrey;
+    padding: 0 5%;
+    border-radius: 15px;
 }
 
 .topContainer h1 {
@@ -25,4 +27,9 @@
 
 .bottomContainer {
 
+}
+
+.station {
+    color: lightsteelblue;
+    font-size: calc(3px + 1vmin);
 }

@@ -8,7 +8,7 @@ const instanceNews = axios.create({
 });
 
 const instanceWeather = axios.create({
-    baseURL: "https://api.openweathermap.org/data/2.5/"
+    baseURL: "https://api.weatherbit.io/v2.0/"
 });
 
 export const newsAPI = {
@@ -21,10 +21,10 @@ export const newsAPI = {
 };
 
 export const weatherAPI = {
-    getFiveDayForecast() {
-        return instanceWeather.get(`forecast?id=706483&units=metric&APPID=a8e26109a999b36c455b988c3c998bca`);
+    getTwoDayForecast() {
+        return instanceWeather.get(`forecast/hourly?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=706483`);
     },
     getCurrentWeather() {
-        return instanceWeather.get(`weather?id=706483&units=metric&APPID=a8e26109a999b36c455b988c3c998bca`);
+        return instanceWeather.get(`current?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=706483&`);
     }
 };
