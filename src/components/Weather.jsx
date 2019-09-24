@@ -4,8 +4,8 @@ import styles from "./Weather.module.css";
 
 const Weather = ({currentWeather}) => {
     const {weather, main, visibility, wind, clouds, dt, sys, name} = currentWeather;
-    
-    let imgUrl = "https://openweathermap.org/img/w/" + weather[0].icon + ".png";
+
+    let imgUrl = `https://openweathermap.org/img/w/${weather[0].icon}.png`;
     let dateRise = new Date(sys.sunrise * 1000);
     let hoursRise =  dateRise.getHours();
     let minutesRise = dateRise.getMinutes();
