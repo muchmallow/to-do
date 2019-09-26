@@ -10,8 +10,11 @@ class WeatherContainer extends React.PureComponent {
     }
 
     render() {
+        if (!this.props.currentWeather) {
+            return <div>Loading...</div>;
+        }
         return (
-            <Weather />
+            <Weather currentWeather={this.props.currentWeather}/>
         );
     }
 }

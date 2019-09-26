@@ -130,8 +130,13 @@ export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (
 };
 
 export const requestCurrentWeatherTC = () => async (dispatch) => {
-    let response = await weatherAPI.getCurrentWeather();
-    dispatch(setCurrentWeather(response.data.data[0]));
+    try {
+        let response = await weatherAPI.getCurrentWeather();
+        dispatch(setCurrentWeather(response.data.data[0]));
+    } catch (e) {
+        console.log(e);
+    }
+
 };
 
 // export const requestTwoDayForecastTC = () => async (dispatch) => {
