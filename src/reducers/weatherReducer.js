@@ -1,7 +1,27 @@
 import {SET_CURRENT_WEATHER, SET_TWO_DAY_FORECAST} from "../constants";
 
 const initialState = {
-    currentWeather: {},
+    currentWeather: {
+        humidity: null,
+        partOfDay: null,
+        pressure: null,
+        lastObservationTime: null,
+        clouds: null,
+        city: null,
+        windSpeed: null,
+        windDirection: null,
+        visibility: null,
+        sunset: null,
+        sunrise: null,
+        snowfall: null,
+        weather: {
+            icon: null,
+            code: null,
+            description: null
+        },
+        temperature: null,
+        feelsLike: null
+    },
     twoDayForecast: {}
 };
 

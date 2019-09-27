@@ -4,15 +4,13 @@ import {compose} from "redux";
 import Weather from "../components/Weather";
 import {requestCurrentWeatherTC} from "../actionCreators/actionCreator";
 
-class WeatherContainer extends React.PureComponent {
+class WeatherContainer extends React.Component {
     componentDidMount() {
+        console.log("компонента вмонтировалась");
         this.props.requestCurrentWeatherTC();
     }
 
     render() {
-        if (!this.props.currentWeather) {
-            return <div>Loading...</div>;
-        }
         return (
             <Weather currentWeather={this.props.currentWeather}/>
         );

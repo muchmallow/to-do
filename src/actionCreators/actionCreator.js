@@ -130,9 +130,18 @@ export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (
 };
 
 export const requestCurrentWeatherTC = () => async (dispatch) => {
+    console.log("зашли в санку");
     try {
-        let response = await weatherAPI.getCurrentWeather();
-        dispatch(setCurrentWeather(response.data.data[0]));
+        console.log("зашли в трай");
+        //const response = await weatherAPI.getCurrentWeather();
+        const response = await fetch("https://api.weatherbit.io/v2.0/current?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=706483");
+        await console.log("запрос улетел");
+        const data = await response.json();
+        await console.log("response распарсился");
+        await console.log(data);
+        await dispatch(setCurrentWeather(data.data[0]));
+        //await dispatch(setCurrentWeather(response.data.data[0]));
+        await console.log("диспатч прошел");
     } catch (e) {
         console.log(e);
     }

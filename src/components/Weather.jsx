@@ -1,11 +1,10 @@
 import React from "react";
-import {connect} from "react-redux";
 import styles from "./Weather.module.css";
 
 const Weather = ({currentWeather}) => {
     const {humidity, partOfDay, pressure, lastObservationTime, clouds, city, windSpeed, windDirection, visibility, sunset, sunrise, snowfall, weather, temperature, feelsLike} = currentWeather;
 
-    let imgUrl = `https://weatherbit.io/static/img/icons/${weather.icon}.png`;
+    const imgUrl = `https://weatherbit.io/static/img/icons/${weather.icon}.png`;
 
     return (
         <div>
@@ -29,7 +28,7 @@ const Weather = ({currentWeather}) => {
                         <span>Wind: {windSpeed} m/s {windDirection}</span>
                     </div>
                     <div>
-                        <span>Visibility: {visibility * 1000} m</span>
+                        <span>Visibility: {visibility} km</span>
                     </div>
                     <div>
                         <span>Cloudiness: {clouds}%</span>
@@ -55,10 +54,4 @@ const Weather = ({currentWeather}) => {
     );
 };
 
-let mapStateToProps = (state) => {
-    return {
-        currentWeather: state.weatherReducer.currentWeather
-    }
-};
-
-export default connect(mapStateToProps)(Weather);
+export default Weather;
