@@ -12,7 +12,7 @@ const Weather = ({currentWeather}) => {
                 <div className={styles.topContainer}>
                     <h1>{city}</h1>
                     <div>
-                        <span>Current t&#176; - {temperature}&#176;C</span>
+                        <span>Current t&#176; {temperature}&#176;C</span>
                     </div>
                     <div>
                         <span>Feels Like {feelsLike}&#176;C</span>
@@ -21,9 +21,6 @@ const Weather = ({currentWeather}) => {
                         <span>{weather.description}</span>
                         <img src={imgUrl} alt="weatherIcon"/>
                     </div>
-                </div>
-                <hr/>
-                <div className={styles.bottomContainer}>
                     <div>
                         <span>Wind: {windSpeed} m/s {windDirection}</span>
                     </div>

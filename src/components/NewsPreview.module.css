@@ -13,6 +13,34 @@
     transition: 0.2s;
 }
 
+@media (max-width: 320px) {
+    .postSection {
+        width: 96%;
+        margin: 7px 2%;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 768px) {
+    .postSection {
+        width: 86%;
+        margin: 8px 7%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1000px){
+    .postSection {
+        width: 70%;
+        margin: 9px 15%;
+    }
+}
+
+@media (min-width: 1001px) {
+    .postSection {
+        width: 60%;
+        margin: 10px 20%;
+    }
+}
+
 .postSection a {
     text-decoration: none;
     color: #fff;

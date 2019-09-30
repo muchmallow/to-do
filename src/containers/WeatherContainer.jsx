@@ -6,7 +6,6 @@ import {requestCurrentWeatherTC} from "../actionCreators/actionCreator";
 
 class WeatherContainer extends React.Component {
     componentDidMount() {
-        console.log("компонента вмонтировалась");
         this.props.requestCurrentWeatherTC();
     }
 

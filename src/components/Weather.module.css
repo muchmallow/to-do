@@ -7,6 +7,12 @@
     font-weight: 400;
 }
 
+/*@media (max-width: 400px) {*/
+/*    .topContainer {*/
+/*        max-width: 100%;*/
+/*    }*/
+/*}*/
+
 .topContainer {
     border: 2px solid slategrey;
     padding: 0 5%;
@@ -15,6 +21,7 @@
 
 .topContainer h1 {
     text-align: center;
+    margin: 7% 0;
 }
 
 .imgWrapper {
@@ -22,14 +29,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 5%;
-}
-
-.bottomContainer {
-
+    margin-top: 3%;
 }
 
 .station {
     color: lightsteelblue;
     font-size: calc(3px + 1vmin);
+    padding: 3% 0;
 }
