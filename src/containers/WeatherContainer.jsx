@@ -10,9 +10,9 @@ class WeatherContainer extends React.Component {
         isChoosing : false
     };
 
-    startingToChoose = () => {
+    toggleChoosing = () => {
         this.setState({
-            isChoosing: true
+            isChoosing: !this.state.isChoosing
         });
     };
 
@@ -42,7 +42,7 @@ class WeatherContainer extends React.Component {
             <Weather currentWeather={this.props.currentWeather}
                      isChoosing={this.state.isChoosing}
                      towns={towns}
-                     startingToChoose={this.startingToChoose}
+                     toggleChoosing={this.toggleChoosing}
                      closeChoosing={this.closeChoosing}
                      finishingToChoose={this.finishingToChoose}/>
         );

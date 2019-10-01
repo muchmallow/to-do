@@ -3,7 +3,7 @@ import React from "react";
 //import 'antd/dist/antd.css';
 import styles from "./Weather.module.css";
 
-const Weather = ({currentWeather, isChoosing, towns, startingToChoose, closeChoosing, finishingToChoose}) => {
+const Weather = ({currentWeather, isChoosing, towns, toggleChoosing, closeChoosing, finishingToChoose}) => {
     const {humidity,
         partOfDay,
         pressure,
@@ -27,6 +27,7 @@ const Weather = ({currentWeather, isChoosing, towns, startingToChoose, closeChoo
             <li key={t.id} id={t.id} onClick={() => {finishingToChoose(t.id)}} className={styles.listItem}>
                 <button className={styles.listItemBtn}>{t.name}</button>
             </li>
+
         );
     });
 
@@ -34,14 +35,13 @@ const Weather = ({currentWeather, isChoosing, towns, startingToChoose, closeChoo
         <div>
             <div className={styles.container}>
                 <div className={styles.topContainer}>
-                    {!isChoosing && <h1 onClick={() => startingToChoose()}>{city}</h1>}
-                    {isChoosing && <div className={styles.listWrapper}>
+                    <h1 onClick={() => toggleChoosing()}>{city}</h1>
+                    <div className={isChoosing ? styles.listWrapperShown : styles.listWrapperHidden}>
                         <ul className={styles.list}>
                             <i className={styles.listIcon} onClick={() => closeChoosing()}>&#10005;</i>
                             {menuItems}
                         </ul>
-                        <hr/>
-                    </div>}
+                    </div>
                     <div>
                         <span>Current t&#176; {temperature}&#176;C</span>
                     </div>
