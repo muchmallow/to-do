@@ -12,7 +12,8 @@ import {
     SET_CURRENT_ARTICLE,
     UNSET_CURRENT_ARTICLE,
     SET_TWO_DAY_FORECAST,
-    SET_CURRENT_WEATHER
+    SET_CURRENT_WEATHER,
+    SET_CHOSEN_CITY, SET_ARRAY_OF_CITIES
 } from "../constants";
 import {newsAPI, weatherAPI} from "../api/api";
 
@@ -110,6 +111,16 @@ export const setCurrentWeather = ({rh, pod, pres, ob_time, clouds, city_name, wi
     app_temp
 });
 
+export const setChosenCity = (chosenCity) => ({
+    type: SET_CHOSEN_CITY,
+    chosenCity
+});
+
+export const setArrayOfCities = (towns) => ({
+    type: SET_ARRAY_OF_CITIES,
+    towns
+});
+
 const getIdAndLocaleDateToArticles = (data) => {
     let length = data.articles.length;
     for(let i = 0; i < length; i++) {
@@ -129,9 +140,9 @@ export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (
     dispatch(setTotalNewsCountAC(data.totalResults));
 };
 
-export const requestCurrentWeatherTC = () => async (dispatch) => {
+export const requestCurrentWeatherTC = (cityId) => async (dispatch) => {
     try {
-        const response = await weatherAPI.getCurrentWeather();
+        const response = await weatherAPI.getCurrentWeather(cityId);
         // const response = await fetch("https://api.weatherbit.io/v2.0/current?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=706483");
         // const data = await response.json();
         // await dispatch(setCurrentWeather(data.data[0]));

@@ -7,21 +7,52 @@
     font-weight: 400;
 }
 
-/*@media (max-width: 400px) {*/
-/*    .topContainer {*/
-/*        max-width: 100%;*/
-/*    }*/
-/*}*/
-
 .topContainer {
     border: 2px solid slategrey;
     padding: 0 5%;
     border-radius: 15px;
 }
 
+.listWrapper {
+
+}
+
+.list {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.listIcon {
+    font: inherit;
+    float: right;
+    cursor: pointer;
+}
+
+.listItem {
+    transition: 0.35s;
+}
+
+.listItem:hover {
+    border: 0 solid bisque;
+    border-radius: 15px;
+    background-color: navajowhite;
+}
+
+.listItemBtn {
+    padding-left: 33%;
+    padding-right: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: calc(10px + 3vmin);
+    font-weight: 600;
+}
+
 .topContainer h1 {
     text-align: center;
     margin: 7% 0;
+    cursor: pointer;
 }
 
 .imgWrapper {

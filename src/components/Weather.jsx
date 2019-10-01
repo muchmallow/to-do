@@ -1,16 +1,47 @@
 import React from "react";
+//import {Menu, Dropdown, Icon} from "antd";
+//import 'antd/dist/antd.css';
 import styles from "./Weather.module.css";
 
-const Weather = ({currentWeather}) => {
-    const {humidity, partOfDay, pressure, lastObservationTime, clouds, city, windSpeed, windDirection, visibility, sunset, sunrise, snowfall, weather, temperature, feelsLike} = currentWeather;
+const Weather = ({currentWeather, isChoosing, towns, startingToChoose, closeChoosing, finishingToChoose}) => {
+    const {humidity,
+        partOfDay,
+        pressure,
+        lastObservationTime,
+        clouds,
+        city,
+        windSpeed,
+        windDirection,
+        visibility,
+        sunset,
+        sunrise,
+        snowfall,
+        weather,
+        temperature,
+        feelsLike} = currentWeather;
 
     const imgUrl = `https://weatherbit.io/static/img/icons/${weather.icon}.png`;
+
+    const menuItems = towns.map(t => {
+        return (
+            <li key={t.id} id={t.id} onClick={() => {finishingToChoose(t.id)}} className={styles.listItem}>
+                <button className={styles.listItemBtn}>{t.name}</button>
+            </li>
+        );
+    });
 
     return (
         <div>
             <div className={styles.container}>
                 <div className={styles.topContainer}>
-                    <h1>{city}</h1>
+                    {!isChoosing && <h1 onClick={() => startingToChoose()}>{city}</h1>}
+                    {isChoosing && <div className={styles.listWrapper}>
+                        <ul className={styles.list}>
+                            <i className={styles.listIcon} onClick={() => closeChoosing()}>&#10005;</i>
+                            {menuItems}
+                        </ul>
+                        <hr/>
+                    </div>}
                     <div>
                         <span>Current t&#176; {temperature}&#176;C</span>
                     </div>

@@ -1,4 +1,9 @@
-import {SET_CURRENT_WEATHER, SET_TWO_DAY_FORECAST} from "../constants";
+import {
+    SET_CURRENT_WEATHER,
+    SET_TWO_DAY_FORECAST,
+    SET_CHOSEN_CITY,
+    SET_ARRAY_OF_CITIES
+} from "../constants";
 
 const initialState = {
     currentWeather: {
@@ -22,6 +27,7 @@ const initialState = {
         temperature: null,
         feelsLike: null
     },
+    chosenCity: null,
     twoDayForecast: {}
 };
 
@@ -48,6 +54,18 @@ const weatherReducer = (state = initialState, action) => {
                     temperature: action.temp,
                     feelsLike: action.app_temp
                 }
+            }
+        }
+        case SET_CHOSEN_CITY: {
+            return {
+                ...state,
+                chosenCity: action.chosenCity
+            }
+        }
+        case SET_ARRAY_OF_CITIES: {
+            return {
+                ...state,
+                towns: action.towns
             }
         }
         default:
