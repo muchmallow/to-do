@@ -4,7 +4,8 @@
     align-items: center;
     justify-items: center;
     font-size: calc(8px + 3vmin);
-    font-weight: 400
+    font-weight: 400;
+    transition: 0.5s;
 }
 
 .topContainer {
@@ -13,18 +14,19 @@
     border-radius: 15px;
 }
 
-.listWrapperHidden {
-    display: none;
-}
+/*.listWrapperHidden {*/
+/*    position: relative;*/
+/*    height: 0;*/
+/*}*/
 
-.listWrapperShown {
-    margin: 2% 0;
-}
+/*.listWrapperHidden.Shown {*/
+/*    height: 100%;*/
+/*}*/
 
 .list {
     padding: 0;
     list-style: none;
-    margin: 0;
+    margin: 1% 0 1% 0;
     border: 1px solid slategrey;
     border-radius: 15px;
 }
@@ -62,7 +64,7 @@
 
 .topContainer h1 {
     text-align: center;
-    margin: 6% 0 0 0;
+    margin: 4% 0 0 0;
     cursor: pointer;
 }
 
