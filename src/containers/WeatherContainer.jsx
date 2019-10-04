@@ -7,7 +7,7 @@ import {towns} from "../components/Towns";
 
 class WeatherContainer extends React.Component {
     state = {
-        isChoosing : false
+        isChoosing : false,
     };
 
     toggleChoosing = () => {
@@ -27,6 +27,11 @@ class WeatherContainer extends React.Component {
         this.closeChoosing();
     };
 
+    getAngle = (isChoosing) => {
+        let rotate = 90;
+        return isChoosing ? rotate = 270 : rotate;
+    };
+
     componentDidMount() {
         this.props.requestCurrentWeatherTC(this.props.chosenCity);
     }
@@ -44,7 +49,8 @@ class WeatherContainer extends React.Component {
                      towns={towns}
                      toggleChoosing={this.toggleChoosing}
                      closeChoosing={this.closeChoosing}
-                     finishingToChoose={this.finishingToChoose}/>
+                     finishingToChoose={this.finishingToChoose}
+                     getAngle={this.getAngle}/>
         );
     }
 }

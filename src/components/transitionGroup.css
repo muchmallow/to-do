@@ -1,0 +1,38 @@
+.dropDown-enter {
+    transform: translateY(-103%);
+    opacity: 0;
+}
+
+.dropDown-enter-active {
+    transition: 350ms ease-in;
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+.dropDown-exit {
+    opacity: 1;
+}
+
+.dropDown-exit-active {
+    transition: 250ms ease-out;
+    transform: translateY(-103%);
+    opacity: 0;
+}
+/*-------------------------------------------------------------------------------------*/
+.arrow-enter {
+    transform: rotate(90deg);
+}
+
+.arrow-enter-active {
+    transition: 350ms ease-in;
+    transform: rotate(270deg);
+}
+
+.arrow-exit {
+
+}
+
+.arrow-exit-active {
+    transition: 250ms ease-out;
+}
+/*-------------------------------------------------------------------------------------*/

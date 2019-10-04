@@ -12,8 +12,14 @@
     border: 2px solid slategrey;
     padding: 0 5%;
     border-radius: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
+.animateWrapper {
+    overflow: hidden;
+}
 /*.listWrapperHidden {*/
 /*    position: relative;*/
 /*    height: 0;*/
@@ -26,16 +32,17 @@
 .list {
     padding: 0;
     list-style: none;
-    margin: 1% 0 1% 0;
+    margin: 2% 0 4% 0;
     border: 1px solid slategrey;
     border-radius: 15px;
 }
 
 .listIcon {
     font: inherit;
+    font-size: 85%;
     float: right;
     cursor: pointer;
-    margin-right: 2%;
+    margin: 1% 3% 0 0;
 }
 
 .listItem {
@@ -53,8 +60,9 @@
 }
 
 .listItemBtn {
-    padding-left: 30%;
-    padding-right: 0;
+    /*padding: 0 0 0 30%;*/
+    position: relative;
+    left: 30%;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -68,6 +76,50 @@
     cursor: pointer;
 }
 
+.cityArrow {
+    font: inherit;
+    font-size: calc(9px + 2vmin);
+    position: absolute;
+    margin: 9% 0 0 1%;
+    transition: 350ms;
+}
+
+@media (max-width: 320px) {
+    .cityArrow {
+        font-size: calc(9px + 2vmin);
+        margin: 7.6% 0 0 1%;
+    }
+}
+@media (min-width: 321px) and (max-width: 1000px) {
+    .cityArrow {
+        font-size: calc(9px + 2vmin);
+        margin: 8.5% 0 0 1%;
+    }
+}
+@media (min-width: 1001px) and (max-width: 1920px) {
+    .cityArrow {
+        font-size: calc(9px + 2vmin);
+        margin: 7.8% 0 0 1%;
+    }
+}
+
+/*.reversed {*/
+/*    transform: rotate(180deg);*/
+/*}*/
+
+/*.topContainer h1::after {*/
+/*    position: absolute;*/
+/*    margin-top: 8%;*/
+/*    content: "\27A4";*/
+/*    font-size: 40%;*/
+/*    transform: rotate(90deg);*/
+/*    transition: 0.4s;*/
+/*}*/
+
+/*.topContainer h1::after:active {*/
+/*    transform: rotate(180deg);*/
+/*}*/
+
 .imgWrapper {
     display: flex;
     flex-direction: row;
@@ -79,5 +131,5 @@
 .station {
     color: lightsteelblue;
     font-size: calc(3px + 1vmin);
-    padding: 3% 0;
+    padding: 3% 0 3% 0;
 }
