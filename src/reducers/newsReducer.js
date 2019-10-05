@@ -5,7 +5,8 @@ import {
     SET_TOPIC,
     SET_SORT_BY,
     SET_CURRENT_ARTICLE,
-    UNSET_CURRENT_ARTICLE
+    UNSET_CURRENT_ARTICLE,
+    SET_LAST_NEWS_REQUEST_TIME
 } from "../constants";
 
 let initialState = {
@@ -15,6 +16,7 @@ let initialState = {
     pageSize: 20,
     topic: "apple",
     sortBy: "publishedAt",
+    lastNewsRequestTime: 0,
     currentArticle: {}
 };
 
@@ -70,6 +72,12 @@ const newsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentArticle: {}
+            }
+        }
+        case SET_LAST_NEWS_REQUEST_TIME: {
+            return {
+                ...state,
+                lastNewsRequestTime: action.lastNewsRequestTime
             }
         }
         default:

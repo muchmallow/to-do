@@ -33,6 +33,7 @@ class WeatherContainer extends React.Component {
     };
 
     componentDidMount() {
+        (Date.now() - this.props.lastWeatherRequestTime > 3600000) &&
         this.props.requestCurrentWeatherTC(this.props.chosenCity);
     }
 
@@ -58,7 +59,8 @@ class WeatherContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         currentWeather: state.weatherReducer.currentWeather,
-        chosenCity: state.weatherReducer.chosenCity
+        chosenCity: state.weatherReducer.chosenCity,
+        lastWeatherRequestTime: state.weatherReducer.lastWeatherRequestTime
     }
 };
 

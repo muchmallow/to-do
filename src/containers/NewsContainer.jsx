@@ -6,6 +6,7 @@ import {requestNewsTC, setCurrentArticle} from "../actionCreators/actionCreator"
 
 class NewsContainer extends React.Component{
     componentDidMount() {
+        (Date.now() - this.props.lastNewsRequestTime > 900000) &&
         this.props.requestNewsTC(this.props.topic, this.props.sortBy, this.props.pageSize, this.props.currentPage);
     }
 
@@ -35,7 +36,8 @@ let mapStateToProps = (state) => {
         currentPage: state.newsReducer.currentPage,
         pageSize: state.newsReducer.pageSize,
         topic: state.newsReducer.topic,
-        sortBy: state.newsReducer.sortBy
+        sortBy: state.newsReducer.sortBy,
+        lastNewsRequestTime: state.newsReducer.lastNewsRequestTime
     }
 };
 

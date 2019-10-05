@@ -2,7 +2,8 @@ import {
     SET_CURRENT_WEATHER,
     SET_TWO_DAY_FORECAST,
     SET_CHOSEN_CITY,
-    SET_ARRAY_OF_CITIES
+    SET_ARRAY_OF_CITIES,
+    SET_LAST_WEATHER_REQUEST_TIME
 } from "../constants";
 
 const initialState = {
@@ -28,6 +29,7 @@ const initialState = {
         feelsLike: null
     },
     chosenCity: null,
+    lastWeatherRequestTime: 0,
     twoDayForecast: {}
 };
 
@@ -66,6 +68,12 @@ const weatherReducer = (state = initialState, action) => {
             return {
                 ...state,
                 towns: action.towns
+            }
+        }
+        case  SET_LAST_WEATHER_REQUEST_TIME: {
+            return {
+                ...state,
+                lastWeatherRequestTime: action.lastWeatherRequestTime
             }
         }
         default:

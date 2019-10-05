@@ -13,7 +13,10 @@ import {
     UNSET_CURRENT_ARTICLE,
     SET_TWO_DAY_FORECAST,
     SET_CURRENT_WEATHER,
-    SET_CHOSEN_CITY, SET_ARRAY_OF_CITIES
+    SET_CHOSEN_CITY,
+    SET_ARRAY_OF_CITIES,
+    SET_LAST_WEATHER_REQUEST_TIME,
+    SET_LAST_NEWS_REQUEST_TIME
 } from "../constants";
 import {newsAPI, weatherAPI} from "../api/api";
 
@@ -121,6 +124,16 @@ export const setArrayOfCities = (towns) => ({
     towns
 });
 
+export const setLastWeatherRequestTime = (lastWeatherRequestTime) => ({
+    type: SET_LAST_WEATHER_REQUEST_TIME,
+    lastWeatherRequestTime
+});
+
+export const setLastNewsRequestTime = (lastNewsRequestTime) => ({
+    type: SET_LAST_NEWS_REQUEST_TIME,
+    lastNewsRequestTime
+});
+
 const getIdAndLocaleDateToArticles = (data) => {
     let length = data.articles.length;
     for(let i = 0; i < length; i++) {
@@ -131,18 +144,26 @@ const getIdAndLocaleDateToArticles = (data) => {
 };
 
 export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (dispatch) => {
-    dispatch(setCurrentPageAC(requestedPage));
-    dispatch(setTopicAC(topic));
-    dispatch(setSortByAC(sortBy));
-    let response = await newsAPI.getNews(topic, sortBy, pageSize, requestedPage);
-    let data = await getIdAndLocaleDateToArticles(response.data);
-    dispatch(setArticlesAC(data.articles));
-    dispatch(setTotalNewsCountAC(data.totalResults));
+    console.log("requested news");
+    try {
+        await dispatch(setCurrentPageAC(requestedPage));
+        await dispatch(setTopicAC(topic));
+        await dispatch(setSortByAC(sortBy));
+        let response = await newsAPI.getNews(topic, sortBy, pageSize, requestedPage);
+        await dispatch(setLastNewsRequestTime(Date.now()));
+        let data = await getIdAndLocaleDateToArticles(response.data);
+        await dispatch(setArticlesAC(data.articles));
+        await dispatch(setTotalNewsCountAC(data.totalResults));
+    } catch (e) {
+        console.log(e);
+    }
 };
 
 export const requestCurrentWeatherTC = (cityId) => async (dispatch) => {
+    console.log("requested new weather");
     try {
         const response = await weatherAPI.getCurrentWeather(cityId);
+        await dispatch(setLastWeatherRequestTime(Date.now()));
         // const response = await fetch("https://api.weatherbit.io/v2.0/current?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=706483");
         // const data = await response.json();
         // await dispatch(setCurrentWeather(data.data[0]));
