@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import Weather from "../components/Weather";
-import {setChosenCity, requestCurrentWeatherTC} from "../actionCreators/actionCreator";
+import {setChosenCity, requestCurrentWeatherTC, requestTwoDayForecastTC} from "../actionCreators/actionCreator";
 import {towns} from "../components/Towns";
 
 class WeatherContainer extends React.Component {
@@ -34,12 +34,14 @@ class WeatherContainer extends React.Component {
 
     componentDidMount() {
         (Date.now() - this.props.lastWeatherRequestTime > 3600000) &&
-        this.props.requestCurrentWeatherTC(this.props.chosenCity);
+        this.props.requestCurrentWeatherTC(this.props.chosenCity) &&
+        this.props.requestTwoDayForecastTC(this.props.chosenCity);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.chosenCity !== this.props.chosenCity) {
             this.props.requestCurrentWeatherTC(this.props.chosenCity);
+            this.props.requestTwoDayForecastTC(this.props.chosenCity);
         }
     }
 
@@ -51,7 +53,8 @@ class WeatherContainer extends React.Component {
                      toggleChoosing={this.toggleChoosing}
                      closeChoosing={this.closeChoosing}
                      finishingToChoose={this.finishingToChoose}
-                     getAngle={this.getAngle}/>
+                     getAngle={this.getAngle}
+                     twoDayForecast={this.props.twoDayForecast}/>
         );
     }
 }
@@ -60,8 +63,9 @@ let mapStateToProps = (state) => {
     return {
         currentWeather: state.weatherReducer.currentWeather,
         chosenCity: state.weatherReducer.chosenCity,
-        lastWeatherRequestTime: state.weatherReducer.lastWeatherRequestTime
+        lastWeatherRequestTime: state.weatherReducer.lastWeatherRequestTime,
+        twoDayForecast: state.weatherReducer.twoDayForecast
     }
 };
 
-export default connect(mapStateToProps, {setChosenCity, requestCurrentWeatherTC})(WeatherContainer);
+export default connect(mapStateToProps, {setChosenCity, requestCurrentWeatherTC, requestTwoDayForecastTC})(WeatherContainer);

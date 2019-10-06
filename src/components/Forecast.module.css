@@ -1,0 +1,89 @@
+.forecastElementsContainer {
+    margin: 3% 0 4% 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(6px + 2vmin);
+    font-weight: 500;
+}
+
+.forecastElements {
+    padding: 0 15%;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forecastHour {
+
+}
+
+.forecastIcon {
+    position: relative;
+    text-align: center;
+    margin: 10% 0 0 0;
+}
+
+.forecastChanceOfRain {
+    position: absolute;
+    color: darkturquoise;
+    top: 0;
+    left: 45%;
+}
+
+.forecastIcon img {
+    width: 50px;
+}
+
+.forecastTemperature {
+
+}
+
+@media (max-width: 320px) {
+    .forecastElements {
+        padding: 0 1%;
+    }
+    .forecastChanceOfRain {
+        font-size: 86%;
+    }
+}
+@media (min-width: 321px) and (max-width: 550px) {
+    .forecastElements {
+        padding: 0 1%;
+    }
+    .forecastChanceOfRain {
+        font-size: 86%;
+    }
+}
+@media (min-width: 551px) and (max-width: 768px) {
+    .forecastElements {
+        padding: 0 5%;
+    }
+    .forecastChanceOfRain {
+        font-size: 80%;
+    }
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+    .forecastElementsContainer {
+        font-size: calc(2px + 2vmin);
+    }
+    .forecastElements {
+        padding: 0 5%;
+    }
+    .forecastChanceOfRain {
+        font-size: 70%;
+    }
+}
+@media (min-width: 1201px) and (max-width: 1920px) {
+    .forecastElementsContainer {
+        font-size: calc(2px + 2vmin);
+    }
+    .forecastElements {
+        padding: 0 5%;
+    }
+    .forecastChanceOfRain {
+        font-size: 70%;
+    }
+}

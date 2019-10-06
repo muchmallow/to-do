@@ -30,7 +30,7 @@ const initialState = {
     },
     chosenCity: null,
     lastWeatherRequestTime: 0,
-    twoDayForecast: {}
+    twoDayForecast: []
 };
 
 const weatherReducer = (state = initialState, action) => {
@@ -74,6 +74,12 @@ const weatherReducer = (state = initialState, action) => {
             return {
                 ...state,
                 lastWeatherRequestTime: action.lastWeatherRequestTime
+            }
+        }
+        case SET_TWO_DAY_FORECAST: {
+            return {
+                ...state,
+                twoDayForecast: action.twoDayForecast
             }
         }
         default:

@@ -89,10 +89,10 @@ export const unsetCurrentArticle = () => ({
     type: UNSET_CURRENT_ARTICLE
 });
 
-// export const setTwoDayForecast = ({ }) => ({
-//     type: SET_TWO_DAY_FORECAST,
-//
-// });
+export const setTwoDayForecast = (twoDayForecast) => ({
+    type: SET_TWO_DAY_FORECAST,
+    twoDayForecast
+});
 
 export const setCurrentWeather = ({rh, pod, pres, ob_time, clouds, city_name, wind_spd, wind_cdir,
                                       vis, sunset, snow, sunrise, weather, temp, app_temp}) => ({
@@ -174,7 +174,7 @@ export const requestCurrentWeatherTC = (cityId) => async (dispatch) => {
 
 };
 
-// export const requestTwoDayForecastTC = () => async (dispatch) => {
-//     let response = await weatherAPI.getTwoDayForecast();
-//     dispatch(setTwoDayForecast(response.data));
-// };
+export const requestTwoDayForecastTC = (cityId) => async (dispatch) => {
+    let response = await weatherAPI.getTwoDayForecast(cityId);
+    await dispatch(setTwoDayForecast(response.data.data));
+};

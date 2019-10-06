@@ -21,8 +21,8 @@ export const newsAPI = {
 };
 
 export const weatherAPI = {
-    getTwoDayForecast() {
-        return instanceWeather.get(`forecast/hourly?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=706483`);
+    getTwoDayForecast(cityId = "706483") {
+        return instanceWeather.get(`forecast/hourly?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=${cityId}&hours=24`);
     },
     getCurrentWeather(cityId = "706483") {
         return instanceWeather.get(`current?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=${cityId}`);

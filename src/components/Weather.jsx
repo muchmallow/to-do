@@ -2,9 +2,10 @@ import React from "react";
 import styles from "./Weather.module.css";
 import "./transitionGroup.css";
 import {CSSTransition} from "react-transition-group";
+import Forecast from "./Forecast";
 
 const Weather = ({currentWeather, isChoosing, towns, toggleChoosing,
-                     closeChoosing, finishingToChoose, getAngle}) => {
+                     closeChoosing, finishingToChoose, getAngle, twoDayForecast}) => {
     const {
         humidity,
         partOfDay,
@@ -35,7 +36,15 @@ const Weather = ({currentWeather, isChoosing, towns, toggleChoosing,
         );
     });
 
-
+    const forecast = twoDayForecast.map(f => {
+        return (
+            <Forecast key={f.ts}
+                      time={f.timestamp_local}
+                      precipitation={f.pop}
+                      weatherIcon={f.weather.icon}
+                      temperature={f.temp}/>
+        );
+    });
 
     return (
         <div className={styles.container}>
@@ -63,6 +72,9 @@ const Weather = ({currentWeather, isChoosing, towns, toggleChoosing,
                 <div className={styles.imgWrapper}>
                     <span>{weather.description}</span>
                     <img src={imgUrl} alt="weatherIcon"/>
+                </div>
+                <div className={styles.forecastWrapper}>
+                    {forecast}
                 </div>
                 <div>
                     <span>Wind: {windSpeed} m/s {windDirection}</span>
