@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import {compose} from "redux";
 import Weather from "../components/Weather";
 import {setChosenCity, requestCurrentWeatherTC, requestTwoDayForecastTC} from "../actionCreators/actionCreator";
 import {towns} from "../components/Towns";
@@ -33,29 +32,33 @@ class WeatherContainer extends React.Component {
     };
 
     componentDidMount() {
-        (Date.now() - this.props.lastWeatherRequestTime > 3600000) &&
-        this.props.requestCurrentWeatherTC(this.props.chosenCity) &&
-        this.props.requestTwoDayForecastTC(this.props.chosenCity);
+        if (Date.now() - this.props.lastWeatherRequestTime > 3600000) {
+            this.props.requestCurrentWeatherTC(this.props.chosenCity);
+            this.props.requestTwoDayForecastTC(this.props.chosenCity);
+        }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.chosenCity !== this.props.chosenCity) {
+        if (prevProps.chosenCity !== this.props.chosenCity) {
             this.props.requestCurrentWeatherTC(this.props.chosenCity);
             this.props.requestTwoDayForecastTC(this.props.chosenCity);
         }
     }
 
     render() {
-        return (
-            <Weather currentWeather={this.props.currentWeather}
-                     isChoosing={this.state.isChoosing}
-                     towns={towns}
-                     toggleChoosing={this.toggleChoosing}
-                     closeChoosing={this.closeChoosing}
-                     finishingToChoose={this.finishingToChoose}
-                     getAngle={this.getAngle}
-                     twoDayForecast={this.props.twoDayForecast}/>
-        );
+        if (this.props.twoDayForecast.length !== 0) {
+            console.log(this.props.twoDayForecast);
+            return (
+                <Weather currentWeather={this.props.currentWeather}
+                         isChoosing={this.state.isChoosing}
+                         towns={towns}
+                         toggleChoosing={this.toggleChoosing}
+                         closeChoosing={this.closeChoosing}
+                         finishingToChoose={this.finishingToChoose}
+                         getAngle={this.getAngle}
+                         twoDayForecast={this.props.twoDayForecast}/>
+            );
+        }
     }
 }
 

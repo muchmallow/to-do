@@ -6,6 +6,7 @@ import Forecast from "./Forecast";
 
 const Weather = ({currentWeather, isChoosing, towns, toggleChoosing,
                      closeChoosing, finishingToChoose, getAngle, twoDayForecast}) => {
+
     const {
         humidity,
         partOfDay,
@@ -46,6 +47,8 @@ const Weather = ({currentWeather, isChoosing, towns, toggleChoosing,
         );
     });
 
+
+
     return (
         <div className={styles.container}>
             <div className={styles.topContainer}>
@@ -73,7 +76,7 @@ const Weather = ({currentWeather, isChoosing, towns, toggleChoosing,
                     <span>{weather.description}</span>
                     <img src={imgUrl} alt="weatherIcon"/>
                 </div>
-                <div className={styles.forecastWrapper}>
+                <div className={styles.scrollParent}>
                     {forecast}
                 </div>
                 <div>
