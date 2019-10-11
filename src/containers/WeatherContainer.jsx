@@ -52,7 +52,6 @@ class WeatherContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <Weather currentWeather={this.props.currentWeather}
                      isChoosing={this.state.isChoosing}
