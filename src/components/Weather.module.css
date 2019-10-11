@@ -122,9 +122,13 @@
 }
 
 .scrollParent {
-    overflow: hidden;
-    overflow-x: scroll;
-    white-space: nowrap;
+    /*display: inline-block;*/
+    /*white-space: nowrap;*/
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid slategrey;
     border-left: none;
     border-right: none;

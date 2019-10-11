@@ -159,22 +159,24 @@ export const requestNewsTC = (topic, sortBy, pageSize, requestedPage) => async (
     }
 };
 
-export const requestCurrentWeatherTC = (cityId) => async (dispatch) => {
+export const requestWeatherTC = (cityId) => async (dispatch) => {
     console.log("requested new weather");
     try {
-        const response = await weatherAPI.getCurrentWeather(cityId);
+        const currentWeatherResponse = await weatherAPI.getCurrentWeather(cityId);
         await dispatch(setLastWeatherRequestTime(Date.now()));
         // const response = await fetch("https://api.weatherbit.io/v2.0/current?key=90db46941f2d41eba9eef01407d850c5&lang=en&units=M&city_id=706483");
         // const data = await response.json();
         // await dispatch(setCurrentWeather(data.data[0]));
-        await dispatch(setCurrentWeather(response.data.data[0]));
+        await dispatch(setCurrentWeather(currentWeatherResponse.data.data[0]));
+        const twoDayForecastResponse = await weatherAPI.getTwoDayForecast(cityId);
+        await dispatch(setTwoDayForecast(twoDayForecastResponse.data.data));
     } catch (e) {
         console.log(e);
     }
 
 };
 
-export const requestTwoDayForecastTC = (cityId) => async (dispatch) => {
-    let response = await weatherAPI.getTwoDayForecast(cityId);
-    await dispatch(setTwoDayForecast(response.data.data));
-};
+// export const requestTwoDayForecastTC = (cityId) => async (dispatch) => {
+//     const twoDayForecastResponse = await weatherAPI.getTwoDayForecast(cityId);
+//     await dispatch(setTwoDayForecast(twoDayForecastResponse.data.data));
+// };

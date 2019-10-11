@@ -28,7 +28,7 @@ const initialState = {
         temperature: null,
         feelsLike: null
     },
-    chosenCity: null,
+    chosenCity: "706483",
     lastWeatherRequestTime: 0,
     twoDayForecast: []
 };

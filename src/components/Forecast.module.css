@@ -1,7 +1,8 @@
 .forecastElementsContainer {
     margin: 3% 0 4% 0;
     padding: 0;
-    display: inline-block;
+    display: flex;
+    flex: 0 0 auto;
     flex-direction: column;
     font-size: calc(6px + 2vmin);
     font-weight: 500;

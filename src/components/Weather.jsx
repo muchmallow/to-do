@@ -4,8 +4,8 @@ import "./transitionGroup.css";
 import {CSSTransition} from "react-transition-group";
 import Forecast from "./Forecast";
 
-const Weather = ({currentWeather, isChoosing, towns, toggleChoosing,
-                     closeChoosing, finishingToChoose, getAngle, twoDayForecast}) => {
+const Weather = ({currentWeather, isChoosing, towns, toggleChoosing, closeChoosing,
+                     finishingToChoose, getAngle, twoDayForecast}) => {
 
     const {
         humidity,
@@ -46,8 +46,6 @@ const Weather = ({currentWeather, isChoosing, towns, toggleChoosing,
                       temperature={f.temp}/>
         );
     });
-
-
 
     return (
         <div className={styles.container}>
