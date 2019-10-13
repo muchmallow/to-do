@@ -60,7 +60,7 @@
 
 .topContainer h1 {
     text-align: center;
-    margin: 4% 0 0 0;
+    margin: 4% 0 4% 0;
     cursor: pointer;
 }
 
@@ -70,6 +70,16 @@
     position: absolute;
     margin: 7% 0 0 1%;
     transition: 350ms;
+}
+
+.currentTemperature {
+    /*margin: 0 0 0 10%;*/
+    text-align: center;
+}
+
+.feelsLike {
+    /*margin: 0 0 0 10%;*/
+    text-align: center;
 }
 
 @media (max-width: 320px) {
@@ -91,21 +101,30 @@
     }
 }
 @media (min-width: 551px) and (max-width: 1000px) {
+    .topContainer {
+        margin: 0 10%;
+    }
     .cityArrow {
         font-size: calc(9px + 2vmin);
-        margin: 4.3% 0 0 1%;
+        margin: 5% 0 0 1%;
     }
 }
 @media (min-width: 1001px) and (max-width: 1250px) {
+    .topContainer {
+        margin: 0 15%;
+    }
     .cityArrow {
         font-size: calc(9px + 2vmin);
-        margin: 3.8% 0 0 1%;
+        margin: 5% 0 0 1%;
     }
 }
 @media (min-width: 1250px) and (max-width: 1920px) {
+    .topContainer {
+        margin: 0 20%;
+    }
     .cityArrow {
         font-size: calc(9px + 2vmin);
-        margin: 2.9% 0 0 1%;
+        margin: 4% 0 0 1%;
     }
 }
 
@@ -114,7 +133,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 3% 0 0 0;
+    margin: 2% 0 2% 0;
 }
 
 .imgWrapper img {
@@ -127,17 +146,38 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+    /*-webkit-overflow-scrolling: touch;*/
+    /*-ms-overflow-style: -ms-autohiding-scrollbar;*/
     border: 1px solid slategrey;
     border-left: none;
     border-right: none;
+    margin: 0 0 2% 0;
     scrollbar-width: none; /* Firefox 64 */
     -ms-overflow-style: none; /* IE 11 */
 }
 
 .scrollParent::-webkit-scrollbar {
-    display: none;
+     /*display: none;*/
+    height: 11px;
+    background-color: blanchedalmond;
+}
+
+.scrollParent::-webkit-scrollbar-track {
+    background: blanchedalmond;
+}
+
+.scrollParent::-webkit-scrollbar-thumb {
+    background: blanchedalmond;
+}
+
+.scrollParent::-webkit-scrollbar-thumb:hover {
+    background: lightsalmon;
+    border-radius: 10px;
+    border: 1px solid lightcoral;
+}
+
+.scrollParent::-webkit-scrollbar-thumb:active {
+    background: darksalmon;
 }
 
 .station {

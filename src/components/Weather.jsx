@@ -64,10 +64,10 @@ const Weather = ({currentWeather, isChoosing, towns, toggleChoosing, closeChoosi
                         </ul>
                     </CSSTransition>
                 </div>
-                <div>
+                <div className={styles.currentTemperature}>
                     <span>Current t&#176; {temperature}&#176;C</span>
                 </div>
-                <div>
+                <div className={styles.feelsLike}>
                     <span>Feels Like {feelsLike}&#176;C</span>
                 </div>
                 <div className={styles.imgWrapper}>
